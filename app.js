@@ -30,18 +30,3 @@ function showQR() {
         QRImage.setAttribute('src', `http://api.qrserver.com/v1/create-qr-code/?data=${url.value}&size=100x100`);
     }
 }
-
-
-
-btnDownload.addEventListener('click', () => {
-    console.log("Clicked");
-    let imagePath = QRImage.getAttribute('src');
-    console.log(src);
-    let fileName = getFileName(imagePath);
-    console.log(fileName);
-    saveAs(imagePath, fileName);
-});
-
-function getFileName(str) {
-    return str.substring(str.lastIndexOf('/') + 1)
-}
