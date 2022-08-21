@@ -15,16 +15,23 @@ function radioChange() {
         text.disabled = false;
         url.value = "";
         text.focus();
+        QRImage.removeAttribute('src', " ")
     } else {
         url.disabled = false;
         text.disabled = true;
         text.value = "";
         url.focus();
+        QRImage.removeAttribute('src', " ")
     }
 }
 
 function showQR() {
-    if (radio1.checked == true) {
+    if (text.value == "" && url.value == "") {
+        alert("Enter Required Text")
+        text.value = "";
+        url.value = "";
+    }
+    else if (radio1.checked == true) {
         QRImage.setAttribute('src', `http://api.qrserver.com/v1/create-qr-code/?data=${text.value}&size=100x100`);
     } else {
         QRImage.setAttribute('src', `http://api.qrserver.com/v1/create-qr-code/?data=${url.value}&size=100x100`);
